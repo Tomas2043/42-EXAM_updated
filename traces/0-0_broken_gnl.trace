@@ -1,0 +1,27 @@
+----------------8<-------------[ START TEST 
+        💻 TEST: get_next_line with BUFFER_SIZE=3 on '/tmp/gnl_test1.txt'
+        🗝 EXPECTED OUTPUT:
+Line 1$
+Line 2$
+Line 3$
+        🔎 YOUR OUTPUT:
+----------------8<------------- END TEST ]
+----------------8<-------------[ START TEST 
+        💻 TEST: get_next_line with BUFFER_SIZE=1 on '/tmp/gnl_test2.txt'
+        🗝 EXPECTED OUTPUT:
+Single line$
+        🔎 YOUR OUTPUT:
+----------------8<------------- END TEST ]
+----------------8<-------------[ START TEST 
+        💻 TEST: get_next_line with BUFFER_SIZE=42 on '/tmp/gnl_test3.txt'
+        🗝 EXPECTED OUTPUT:
+Has empty$
+$
+lines here$
+        🔎 YOUR OUTPUT:
+----------------8<------------- END TEST ]
+----------------8<-------------[ START TEST 
+        💻 TEST: get_next_line with BUFFER_SIZE=10 on '/tmp/gnl_test4.txt'
+        🗝 EXPECTED OUTPUT:
+No newline at end        🔎 YOUR OUTPUT:
+----------------8<------------- END TEST ]

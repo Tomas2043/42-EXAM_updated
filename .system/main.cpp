@@ -68,8 +68,7 @@ void exam::exam_prompt(void)
             std::getline(std::cin, input);
             if (input == "yes")
             {
-                if (std::ifstream(".system/exam_token/actuel_token.txt"))
-                    remove(".system/exam_token/actuel_token.txt");
+                remove(".system/exam_token/current_token.txt");
                 exit(0);
             }
             else
@@ -185,7 +184,6 @@ bool exam::start_new_ex(void)
         exercise ex = *randomize_exercise(list_ex_lvl, setting_dse);
         current_ex = new exercise(ex);
         prepare_current_ex();
-        store_data();
     }
     if (vip)
         infovip();
@@ -210,10 +208,7 @@ int main(int argc, char **argv)
     if (!file_exists(".system/acceptCGV"))
         CGVAcceptation();
 
-    if (file_exists(".system/exam_token/current_token.txt"))
-        exm.restore_data();
-    else
-        exm.ask_param();
+    exm.ask_param();
 
     exm.start_new_ex();
 

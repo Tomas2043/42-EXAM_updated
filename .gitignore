@@ -1,3 +1,7 @@
 traces/
 subjects/
 rendu/
+success/
+.system/a.out
+.system/exam_token/current_token.txt
+.system/grading/

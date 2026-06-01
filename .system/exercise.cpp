@@ -106,7 +106,7 @@ exercise *randomize_exercise(std::map<int, exercise> list, bool remove_success)
             dosrandom = false;
     }
     if (dosrandom)
-        srand(time(NULL));
+        srand(time(NULL) ^ getpid());
     int random = rand() % list.size();
     for (int i = 0; i < random; i++)
         it++;

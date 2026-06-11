@@ -48,10 +48,17 @@ run_test() {
     fi
 
     .system/grading/source < "$testfile" | cat -e > .system/grading/sourcexam
-    .system/grading/final  < "$testfile" | cat -e > .system/grading/finalexam 2>/dev/null
+    timeout 5 .system/grading/final < "$testfile" | cat -e > .system/grading/finalexam 2>/dev/null
+    FINAL_STATUS=${PIPESTATUS[0]}
 
     DIFF=$(diff .system/grading/sourcexam .system/grading/finalexam)
-    if [ "$DIFF" != "" ]; then
+    if [ $FINAL_STATUS -eq 124 ]; then
+        index=$((index + 1))
+        echo "----------------8<-------------[ START TEST " >> .system/grading/traceback
+        printf "        💻 TEST: get_next_line with BUFFER_SIZE=%s on '%s'\n" "$bufsize" "$testfile" >> .system/grading/traceback
+        printf "        ❌ TIMEOUT: your program ran for more than 5 seconds (infinite loop?)\n" >> .system/grading/traceback
+        echo "----------------8<------------- END TEST ]" >> .system/grading/traceback
+    elif [ "$DIFF" != "" ]; then
         index=$((index + 1))
         echo "----------------8<-------------[ START TEST " >> .system/grading/traceback
         printf "        💻 TEST: get_next_line with BUFFER_SIZE=%s on '%s'\n" "$bufsize" "$testfile" >> .system/grading/traceback
